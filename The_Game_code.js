@@ -35,14 +35,14 @@ function draw() {
         jump = 0
         y = 620
     }
+    if (mouse.presses()) {
+        if(y <= 620){
+            jump = -20
+        }
+        console.log("hi")
+        }
 }
 
-if (mouse.presses()) {
-    if(y <= 620){
-        jump = -20
-    }
-    console.log("hi")
-    }
 /*******************************************************/
 //  END OF APP
 /*******************************************************/
