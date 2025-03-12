@@ -2,6 +2,8 @@
 // variables and constants
 /*******************************************************/
 let Platform ;
+let y = 620;
+let jump = 0;
 const MOVEMENTSPEED = 5;
 
 /*******************************************************/
@@ -11,7 +13,7 @@ function setup() {
 	console.log("");
     cnv = new Canvas(windowWidth, windowHeight);
     world.gravity.y = 10;
-    ball_1 = new Sprite(300,620, 50, 'd');
+    ball_1 = new Sprite(300,y, 50, 'd');
     ball_1.color = '#00bcd4';
     ball_1.friction   = 0;
 
@@ -26,25 +28,21 @@ function setup() {
 /*******************************************************/
 function draw() { 
     background('#1e2a47');
-
-    if (kb.pressing('up')) {
-        world.gravity.y = -10;
-    
+    y = y + jump
+    if (y < 620){
+        jump = jump + 1
+    }else{
+        jump = 0
+        y = 620
     }
-
-    if (mouse.presses()) {
-
-    
-        
-        }
-
-        if (kb.pressing('w')) {
-            ball_1.vel.y = -MOVEMENTSPEED;
-            world.gravity.y
-
-        }
-
 }
+
+if (mouse.presses()) {
+    if(y <= 620){
+        jump = -20
+    }
+    console.log("hi")
+    }
 /*******************************************************/
 //  END OF APP
 /*******************************************************/
