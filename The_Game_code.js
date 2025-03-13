@@ -2,8 +2,6 @@
 // variables and constants
 /*******************************************************/
 let Platform ;
-let y = 620;
-let jump = 0;
 const MOVEMENTSPEED = 5;
 
 /*******************************************************/
@@ -12,13 +10,22 @@ const MOVEMENTSPEED = 5;
 function setup() {
 	console.log("");
     cnv = new Canvas(windowWidth, windowHeight);
-    world.gravity.y = 10;
-    ball_1 = new Sprite(300,y, 50, 'd');
-    ball_1.color = '#00bcd4';
-    ball_1.friction   = 0;
+    world.gravity.y = 20;
+    Player_Box = new Sprite(300,620, 50,50, 'd');
+    Player_Box.color = '#00bcd4';
+    Player_Box.friction   = 0;
 
-    let Platform = new Sprite(900, 750, 2008, 10, 's'); 
+    //Platform
+    let Platform = new Sprite(900, 750, 2008, 10, 's');
     Platform.color = '#d3d3d3';
+
+    //obsticles
+    let obsticles = new Sprite(700, 620, 20, 'k');
+    obsticles.color = 'Red';
+    
+    
+    
+
 
 }
 
@@ -28,17 +35,8 @@ function setup() {
 /*******************************************************/
 function draw() { 
     background('#1e2a47');
-    y = y + jump
-    if (y < 620){
-        jump = jump + 1
-    }else{
-        jump = 0
-        y = 620
-    }
     if (mouse.presses()) {
-        if(y <= 620){
-            jump = -20
-        }
+        Player_Box.vel.y = 50;
         console.log("hi")
         }
 }

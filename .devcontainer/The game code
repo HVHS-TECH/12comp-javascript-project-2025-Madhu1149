@@ -7,3 +7,5 @@ planning
 // Text/Score: White (#ffffff) or Light Grey (#e0e0e0)
 // HUD: Darker tones for the HUD (Black or Dark Grey)
 //********************************************//
+
+Obsticle_Group.add(Obsticles);
