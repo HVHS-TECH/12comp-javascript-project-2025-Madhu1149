@@ -22,6 +22,14 @@ function setup() {
     // Group for coins
     obsticles_Group = new Group();
 
+    //obsticles
+    function spawn_obsticles() {
+        let y = random(640, 730);
+        let obsticles = new Sprite(1900, y , 30, 'k');
+        obsticles.color = 'red';
+        obsticles.vel.x = -2;
+        obsticles_Group.add(obsticles);
+    }
 
 }
 
@@ -35,19 +43,11 @@ function draw() {
         Player_Box.vel.y = 60;
         console.log("hi")
     }
-    
-    //obsticles
-    function spawn_obsticles() {
-        let y = random(640, 730);
-        let obsticles = new Sprite(1900, y , 30, 'k');
-        obsticles.color = 'red';
-        obsticles.vel.x = -2;
-        obsticles_Group.add(obsticles);
-    }
 
-    // Spawn initial coin
-    spawn_obsticles();
-
+    // Spawn initial obsticles
+    if (random(0,1000)<20){
+        obsticles_Group.add(spawn_obsticles());
+	}
 
 }
 

@@ -13,3 +13,5 @@ Obsticle_Group.add(Obsticles);
 obsticles.vel.x = 2;
 
 let y = random(640, 730);
+
+spawn_obsticles();
