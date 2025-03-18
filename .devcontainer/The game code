@@ -15,3 +15,12 @@ obsticles.vel.x = 2;
 let y = random(640, 730);
 
 spawn_obsticles();
+
+
+
+// Spawn initial obsticles
+if (random(0,1000)<20){
+obsticles_Group.add(spawn_obsticles());
+}
+
+

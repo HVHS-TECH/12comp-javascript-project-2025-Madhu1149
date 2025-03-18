@@ -2,6 +2,7 @@
 // variables and constants
 /*******************************************************/
 let Platform ;
+let obsticles
 const MOVEMENTSPEED = 5;
 
 /*******************************************************/
@@ -13,7 +14,8 @@ function setup() {
     world.gravity.y = 20;
     Player_Box = new Sprite(300,620, 50,50, '');
     Player_Box.color = '#00bcd4';
-    Player_Box.friction   = 0;
+    Player_Box.friction   = 10;
+
 
     //Platform
     let Platform = new Sprite(900, 750, 2008, 10, 'k');
@@ -21,6 +23,22 @@ function setup() {
 
     // Group for coins
     obsticles_Group = new Group();
+
+}
+
+
+	
+/*******************************************************/
+// draw()
+/*******************************************************/
+function draw() { 
+    background('#1e2a47');
+    if (mouse.presses()) {
+        Player_Box.vel.y = 60;
+        Player_Box.vel.x = 0;
+        console.log("hi")
+    
+    }
 
     //obsticles
     function spawn_obsticles() {
@@ -31,25 +49,14 @@ function setup() {
         obsticles_Group.add(obsticles);
     }
 
-}
+    // Spawn initial coin
+    spawn_obsticles();
 
-	
-/*******************************************************/
-// draw()
-/*******************************************************/
-function draw() { 
-    background('#1e2a47');
-    if (mouse.presses()) {
-        Player_Box.vel.y = 60;
-        console.log("hi")
-    }
-
-    // Spawn initial obsticles
-    if (random(0,1000)<20){
-        obsticles_Group.add(spawn_obsticles());
-	}
+    
 
 }
+
+
 
 /*******************************************************/
 //  END OF APP
