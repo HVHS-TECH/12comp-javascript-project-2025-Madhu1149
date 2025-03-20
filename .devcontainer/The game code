@@ -23,4 +23,20 @@ if (random(0,1000)<20){
 obsticles_Group.add(spawn_obsticles());
 }
 
+Player_Box.friction   = 10;
 
+world.gravity.y = 0;
+
+displayScore();
+
+function displayScore() {
+    fill(0, 0, 0);
+    textSize(20);
+    text("Score: " + score, 10, 20);
+}
+
+
+function Deleting_obsticles(_jumped_obsticles, _player) {
+    _jumped_obsticles.remove();
+    score += 1;
+}

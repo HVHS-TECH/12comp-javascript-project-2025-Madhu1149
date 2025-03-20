@@ -11,10 +11,9 @@ const MOVEMENTSPEED = 5;
 function setup() {
 	console.log("");
     cnv = new Canvas(windowWidth, windowHeight);
-    world.gravity.y = 20;
-    Player_Box = new Sprite(300,620, 50,50, '');
+    Player_Box = new Sprite(300,620, 50,50, 'k');
     Player_Box.color = '#00bcd4';
-    Player_Box.friction   = 10;
+   
 
 
     //Platform
@@ -26,6 +25,15 @@ function setup() {
 
 }
 
+//obsticles
+function spawn_obsticles() {
+    let y = random(640, 730);
+    let obsticles = new Sprite(1900, y , 30, 'k');
+    obsticles.color = 'red';
+    obsticles.vel.x = -2;
+    obsticles_Group.add(obsticles);
+}
+
 
 	
 /*******************************************************/
@@ -33,26 +41,25 @@ function setup() {
 /*******************************************************/
 function draw() { 
     background('#1e2a47');
+    //player Jumps when mouse is clicked
     if (mouse.presses()) {
-        Player_Box.vel.y = 60;
-        Player_Box.vel.x = 0;
-        console.log("hi")
+        Player_Box.vel.y = -40;
     
     }
-
-    //obsticles
-    function spawn_obsticles() {
-        let y = random(640, 730);
-        let obsticles = new Sprite(1900, y , 30, 'k');
-        obsticles.color = 'red';
-        obsticles.vel.x = -2;
-        obsticles_Group.add(obsticles);
-    }
-
-    // Spawn initial coin
-    spawn_obsticles();
-
+    //When the player reaches a certain height it falls onto the platform
     
+    /*
+    if ( = -40) {
+        Player_Box = new Sprite(300,620, 50,50, 'k');
+    
+    }
+        */
+
+
+    // Spawn initial obsticles
+    if (random(0,3000)<50){
+        spawn_obsticles();
+    }
 
 }
 
