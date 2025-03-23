@@ -1,9 +1,9 @@
 /*******************************************************/
 // variables and constants
 /*******************************************************/
-let Platform ;
-let obsticles
-const MOVEMENTSPEED = 5;
+const rotationSpeed = 0;  
+var score = 0;
+
 
 /*******************************************************/
 // setup()
@@ -11,24 +11,27 @@ const MOVEMENTSPEED = 5;
 function setup() {
 	console.log("");
     cnv = new Canvas(windowWidth, windowHeight);
-    Player_Box = new Sprite(300,620, 50,50, 'k');
+    world.gravity.y = 10;
+    Player_Box = new Sprite(300,620, 50,50);
+    Player_Box.vel.x = 0;
     Player_Box.color = '#00bcd4';
    
 
 
     //Platform
-    let Platform = new Sprite(900, 750, 2008, 10, 'k');
+    const  Platform = new Sprite(900, 750, 2008, 10, 'k');
     Platform.color = '#d3d3d3';
 
     // Group for coins
     obsticles_Group = new Group();
 
+
 }
 
 //obsticles
 function spawn_obsticles() {
-    let y = random(640, 730);
-    let obsticles = new Sprite(1900, y , 30, 'k');
+    y = random(640, 730);
+    const  obsticles = new Sprite(1900, y , 30, 'k');
     obsticles.color = 'red';
     obsticles.vel.x = -2;
     obsticles_Group.add(obsticles);
@@ -43,26 +46,31 @@ function draw() {
     background('#1e2a47');
     //player Jumps when mouse is clicked
     if (mouse.presses()) {
-        Player_Box.vel.y = -40;
+        Player_Box.vel.y = 60;
     
-    }
-    //When the player reaches a certain height it falls onto the platform
-    
-    /*
-    if ( = -40) {
-        Player_Box = new Sprite(300,620, 50,50, 'k');
-    
-    }
-        */
+    } 
+//When the player reaches a certain height it falls onto the platform
+
+/*
+if ( Player_Box.vel.y = -4;) {
+    Player_Box.vel.y = 4
+}
+*/
 
 
-    // Spawn initial obsticles
-    if (random(0,3000)<50){
-        spawn_obsticles();
-    }
+
+// Spawn initial obsticles
+if (random(0,3000)<30){
+    spawn_obsticles();
+}
 
 }
 
+function collectCoin(_collectedCoin, _player) {
+    _collectedCoin.remove();
+    score += 1;
+    spawnCoin();
+}
 
 
 /*******************************************************/
