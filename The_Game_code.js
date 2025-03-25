@@ -1,7 +1,8 @@
 /*******************************************************/
 // variables and constants
 /*******************************************************/
-const rotationSpeed = 0;  
+const rotationSpeed = 0;
+const hi = hello
 var score = 0;
 
 
@@ -49,28 +50,30 @@ function draw() {
         Player_Box.vel.y = 60;
     
     } 
-//When the player reaches a certain height it falls onto the platform
 
-/*
-if ( Player_Box.vel.y = -4;) {
-    Player_Box.vel.y = 4
-}
-*/
+    // Spawn initial obsticles
+    if (random(0,3000)<30){
+        spawn_obsticles();
+    }
 
-
-
-// Spawn initial obsticles
-if (random(0,3000)<30){
-    spawn_obsticles();
-}
+     // Displaying score 
+     displayScore();
+     Add_score()
 
 }
 
-function collectCoin(_collectedCoin, _player) {
-    _collectedCoin.remove();
-    score += 1;
-    spawnCoin();
+// Displaying score function
+function displayScore(){
+    fill(0, 0, 0);
+	textSize(20);
+    fill('white') 
+	text("Score: " + score, 10,20);
 }
+function Add_score(){
+    if(hi = hello)score=+1;
+}
+
+
 
 
 /*******************************************************/

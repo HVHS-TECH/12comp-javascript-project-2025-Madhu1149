@@ -36,7 +36,9 @@ function displayScore() {
 }
 
 
-function Deleting_obsticles(_jumped_obsticles, _player) {
-    _jumped_obsticles.remove();
-    score += 1;
+
+function displayScore(){
+    fill(0, 0, 0);
+	textSize(20);
+	text("Score: " + score, 10,20);
 }
