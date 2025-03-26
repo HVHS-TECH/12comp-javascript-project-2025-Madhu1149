@@ -29,12 +29,20 @@ function setup() {
     // Group for coins
     obsticles_Group = new Group();
 
+    
+    function spawn_obsticles() {
+        y = random(640, 730);
+        const  obsticles = new Sprite(1900, y , 30, 'k');
+        obsticles.color = 'red';
+        obsticles.vel.x = -2;
+        obsticles_Group.add(obsticles);
+    }
+
     // Register a callback for collision
     obsticles_Group.collides(wall,delete_obsticles);
 
 }
-
-//obsticles
+// spawning obsticles
 function spawn_obsticles() {
     y = random(640, 730);
     const  obsticles = new Sprite(1900, y , 30, 'k');
@@ -55,6 +63,10 @@ function draw() {
         Player_Box.vel.y = 60;
     
     } 
+
+    // Register a callback for collision
+    obsticles_Group.collides(wall,delete_obsticles);
+    
      // Spawn initial obsticles
      if (random(0,3000)<30){
         spawn_obsticles();
