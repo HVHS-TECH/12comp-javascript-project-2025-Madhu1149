@@ -42,3 +42,56 @@ function displayScore(){
 	textSize(20);
 	text("Score: " + score, 10,20);
 }
+
+
+
+
+
+
+
+
+
+    // Register a callback for collision
+    obsticles_Group.collides(wall,delete_obsticles);
+    
+     // Spawn initial obsticles
+     if (random(0,3000)<30){
+        spawn_obsticles();
+    }
+
+     // Displaying score 
+     displayScore();
+
+}
+
+// Displaying score function
+function displayScore(){
+    fill(0, 0, 0);
+	textSize(20);
+    fill('white') 
+	text("Score: " + score, 10,20);
+}
+// delete obsticles after they go out of screen
+function delete_obsticles(_delete_obsticle, _wall){
+    //delete the obsticle which collides
+    _delete_obsticle.remove();
+    score += 1;
+}
+
+
+
+// function to activate the game when the button is pressed
+function Start_Game(){
+    draw() 
+    spawn_obsticles
+}
+
+
+
+    // creating button for start screen
+    let button = createButton
+    // button.position(100,100)
+
+    // when button is presses the game starts
+    button.mousePressed(Start_Game())
+

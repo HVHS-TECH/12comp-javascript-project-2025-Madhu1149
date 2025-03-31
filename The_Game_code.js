@@ -12,6 +12,8 @@ function setup() {
 	console.log("");
     cnv = new Canvas(windowWidth, windowHeight);
     world.gravity.y = 10;
+
+
     Player_Box = new Sprite(300,620, 50,50);
     Player_Box.vel.x = 0;
     Player_Box.color = '#00bcd4';
@@ -23,8 +25,10 @@ function setup() {
     Platform.color = '#d3d3d3';
 
     // end of screen wall
-      wall = new Sprite(10, 450, 8, 800, 'k');
-    wall.color = 'white';
+      wall = new Sprite(10, 720, 120, 100);
+      wall.color = 'white';
+      wall.rotationSpeed = 0;
+      wall.vel.x = 0;
 
     // Group for coins
     obsticles_Group = new Group();
@@ -41,6 +45,7 @@ function setup() {
     // Register a callback for collision
     obsticles_Group.collides(wall,delete_obsticles);
 
+
 }
 // spawning obsticles
 function spawn_obsticles() {
@@ -50,6 +55,7 @@ function spawn_obsticles() {
     obsticles.vel.x = -2;
     obsticles_Group.add(obsticles);
 }
+
 
 
 	
