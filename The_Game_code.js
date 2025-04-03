@@ -4,9 +4,16 @@
 const rotationSpeed = 0;
 var score = 0;
 var life = 3;
+let player_image, obstacle_image, background_image;
 
-
-
+/***************************************************************/
+//preloading the images for the player_image, obstacle_image and background_image
+/***************************************************************/
+function preload(){
+    player_image = loadimage ('ninja run')
+    obstacle_image = loadimage ('NicePng_shuriken-png_9664081')
+    background_image = loadimage ('0e2d72ab-ff91-4321-8535-a352ab38858b (1)')    
+}
 /*******************************************************/
 // setup()
 /*******************************************************/
@@ -20,7 +27,7 @@ function setup() {
     //creating player sprite
     Player_Box = new Sprite(300,620, 50,50);
     Player_Box.vel.x = 0;
-    Player_Box.color = '#00bcd4';
+    Player_Box.image = player_image;
    
 
 
@@ -61,7 +68,7 @@ function setup() {
 function spawn_obstacles() {
     //y = random(660, 730);
     const  obstacles = new Sprite(1900, 725 , 35, 'k');
-    obstacles.color = 'red';
+    obstacles.image = obstacle_image;
     obstacles.vel.x = -2;
     obstacles_Group.add(obstacles);
 }
@@ -73,7 +80,7 @@ function spawn_obstacles() {
 // draw()
 /*******************************************************/
 function draw() { 
-    background('#1e2a47');
+    background(background_image);
     //player Jumps when mouse is clicked
     if (mouse.presses()) {
         Player_Box.vel.y = 60;
@@ -82,12 +89,12 @@ function draw() {
 
     
     
-     // Spawn initial obstacles
+     // S awn initial obstacles
      if (random(0,3000)<30){
         spawn_obstacles();
     }
 
-     // Displaying score on screen
+     // D splaying score on screen
      displayScore();
 
      //display lives on screen
@@ -133,11 +140,13 @@ function lose_life(_player,obstacle){
 }
 
 function game_over(){
+    clear(); // i don't lnow what this line is i saw it in youtube
     background('black');
     fill('red');
     textSize(50);
-    textAlign(CENTER, CENTER);
+    textAlign(CENTER,CENTER);
     text("Game Over",2,2);
+    noloop(); //ends game
 
 }
 
