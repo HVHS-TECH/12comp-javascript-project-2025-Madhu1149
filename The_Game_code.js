@@ -3,7 +3,8 @@
 /*******************************************************/
 const rotationSpeed = 0;
 var score = 0;
-var lifes = 3;
+var life = 3;
+
 
 
 /*******************************************************/
@@ -45,32 +46,24 @@ function setup() {
     wall.vel.x = 0;
 
     // Group for coins
-    obsticles_Group = new Group();
-
+    obstacles_Group = new Group();
     
-    function spawn_obsticles() {
-        y = random(640, 730);
-        const  obsticles = new Sprite(1900, y , 30, 'k');
-        obsticles.color = 'red';
-        obsticles.vel.x = -2;
-        obsticles_Group.add(obsticles);
-    }
-
-    // Register a callback for collision of obsticles and end of the screen
-    obsticles_Group.collides(wall,delete_obsticles);
+    // Register a callback for collision of obstacles and end of the screen
+    obstacles_Group.collides(wall,delete_obstacles);
     
-    //registering callback for collision of player and obsticles
-    Player_Box.collides(obsticles_Group,delete_player);
+    //registering callback for collision of player and obstacles
+    Player_Box.collides(obstacles_Group,lose_life);
 
 
 }
-// spawning obsticles
-function spawn_obsticles() {
+
+ //spawning obstacles
+function spawn_obstacles() {
     //y = random(660, 730);
-    const  obsticles = new Sprite(1900, 725 , 35, 'k');
-    obsticles.color = 'red';
-    obsticles.vel.x = -2;
-    obsticles_Group.add(obsticles);
+    const  obstacles = new Sprite(1900, 725 , 35, 'k');
+    obstacles.color = 'red';
+    obstacles.vel.x = -2;
+    obstacles_Group.add(obstacles);
 }
 
 
@@ -89,16 +82,16 @@ function draw() {
 
     
     
-     // Spawn initial obsticles
+     // Spawn initial obstacles
      if (random(0,3000)<30){
-        spawn_obsticles();
+        spawn_obstacles();
     }
 
      // Displaying score on screen
      displayScore();
 
      //display lives on screen
-     display_lives()
+     display_lifes()
 
 }
 
@@ -111,27 +104,43 @@ function displayScore(){
 }
 
 // Displaying lifes function
-function display_lives(){
+function display_lifes(){
     fill(0, 0, 0);
 	textSize(20);
     fill('white') 
-	text("lives: " + lifes, 50,20);
+	text("lives: " + life, 100,20);
 }
 
-// delete obsticles after they go out of screen
-function delete_obsticles(_delete_obsticle, _wall){
-    //delete the obsticle which collides
-    _delete_obsticle.remove();
+// delete obstacles after they go out of screen
+function delete_obstacles(_delete_obstacle, _wall){
+    //delete the obstacle which collides
+    _delete_obstacle.remove();
     score += 1;
 }
 
-// delete player after they collide with obsticle and lose game
-function delete_player(_delete_player, _obsticles){
-    //delete the obsticle which collides
-    _delete_player.remove();
-    lifes -= 1;
+// lose life after player collide with obstacle 
+function lose_life(_player,obstacle){
+    //delete the obstacle which collides
+    obstacle.remove();
+    life -= 1;
+
+    //if all 3 lives are lost the game will end
+    if (life <= 0){
+        game_over();
+    }
+    
 
 }
+
+function game_over(){
+    background('black');
+    fill('red');
+    textSize(50);
+    textAlign(CENTER, CENTER);
+    text("Game Over",2,2);
+
+}
+
 
 
 /*******************************************************/
