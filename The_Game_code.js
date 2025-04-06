@@ -10,9 +10,9 @@ let player_image, obstacle_image, background_image;
 //preloading the images for the player_image, obstacle_image and background_image
 /***************************************************************/
 function preload(){
-    player_image = loadimage ('ninja run')
-    obstacle_image = loadimage ('NicePng_shuriken-png_9664081')
-    background_image = loadimage ('0e2d72ab-ff91-4321-8535-a352ab38858b (1)')    
+    player_image = loadimg('ninja run')
+    obstacle_image = loadimg('NicePng_shuriken-png_9664081')
+    background_image = loadimg('0e2d72ab-ff91-4321-8535-a352ab38858b (1)')    
 }
 /*******************************************************/
 // setup()
