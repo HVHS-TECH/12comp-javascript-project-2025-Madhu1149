@@ -10,7 +10,7 @@ let player_image, obstacle_image, background_image;
 //preloading the images for the player_image, obstacle_image and background_image
 /***************************************************************/
 function preload(){
-    player_image = loadImage('Ninja .png');
+    player_image = loadImage('Ninja.png');
     obstacle_image = loadImage('Ninja tool img.png');
     background_image = loadImage('Background.jpg');  
 }
