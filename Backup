@@ -4,6 +4,16 @@
 const rotationSpeed = 0;
 var score = 0;
 var life = 3;
+let player_image, obstacle_image, background_image;
+
+/***************************************************************/
+//preloading the images for the player_image, obstacle_image and background_image
+/***************************************************************/
+function preload(){
+    player_image = loadImage('rCQ');
+    obstacle_image = loadImage('');
+    background_image = loadImage('https://img.itch.zone/aW1nLzE2NTA0NDcxLnBuZw==/original/PSAuyN.png');  
+}
 /*******************************************************/
 // setup()
 /*******************************************************/
@@ -17,7 +27,7 @@ function setup() {
     //creating player sprite
     Player_Box = new Sprite(300,620, 50,50);
     Player_Box.vel.x = 0;
-    Player_Box.color = '#00bcd4';
+    Player_Box.image = player_image;
    
 
 
@@ -38,7 +48,7 @@ function setup() {
 
     //end of screen to add score
     wall = new Sprite(10, 720, 10, 10);
-    wall.color = '#1e2a47';
+    wall.color = 'white';
     wall.rotationSpeed = 0;
     wall.vel.x = 0;
 
@@ -56,11 +66,11 @@ function setup() {
 
  //spawning obstacles
 function spawn_obstacles() {
-     //y = random(660, 730);
-     const  obstacles = new Sprite(1900, 725 , 35, 'k');
-     obstacles.color = 'red';
-     obstacles.vel.x = -2;
-     obstacles_Group.add(obstacles);
+    //y = random(660, 730);
+    const  obstacles = new Sprite(1900, 725 , 35, 'k');
+    obstacles.image = obstacle_image;
+    obstacles.vel.x = -2;
+    obstacles_Group.add(obstacles);
 }
 
 
@@ -70,7 +80,7 @@ function spawn_obstacles() {
 // draw()
 /*******************************************************/
 function draw() { 
-    background('#1e2a47');
+    background(background_image);
     //player Jumps when mouse is clicked
     if (mouse.presses()) {
         Player_Box.vel.y = 60;
@@ -134,6 +144,7 @@ function game_over(){
     background('black');
     fill('red');
     textSize(50);
+    textAlign(CENTER,CENTER);
     text("Game Over",2,2);
     noloop(); //ends game
 
