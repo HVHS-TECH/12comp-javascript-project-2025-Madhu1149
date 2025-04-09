@@ -26,11 +26,13 @@ function setup() {
     Play_Again_Button.mousePressed(restartGame);
     Play_Again_Button.hide();
     
-    //for blank screen 
-    noLoop();
 
+    //for blank screen 
+    background('#1e2a47');
+    noLoop();
     //setup game
     setupGame();
+
 }
 /*******************************************************/
 //Function to start game
@@ -43,7 +45,7 @@ function setupGame(){
     life = 3;
 
     //world gravity
-    world.gravity.y = 10;
+    world.gravity.y = 15;
 
     //creating player sprite
     Player_Box = new Sprite(300,620, 50,50);
@@ -66,7 +68,7 @@ function setupGame(){
     wallTop.color = 'purple';
 
     //end of screen to add score
-    wall = new Sprite(10, 720, 10, 10);
+    wall = new Sprite(10, 740, 10, 10);
     wall.color = '#1e2a47';
     wall.rotationSpeed = 0;
     wall.vel.x = 0;
@@ -96,7 +98,7 @@ function startGame(){
 function spawn_obstacles() {
      const  obstacles = new Sprite(1900, 725 , 35, 'k');
      obstacles.color = 'red';
-     obstacles.vel.x = -2;
+     obstacles.vel.x = -7;
      obstacles_Group.add(obstacles);
 }
 
@@ -112,7 +114,7 @@ function draw() {
     background('#1e2a47');
     //player Jumps when mouse is clicked
     if (mouse.presses()) {
-        Player_Box.vel.y = 60;
+        Player_Box.vel.y = 50;
     
     } 
      //Randomly spawn obstacles
@@ -192,6 +194,26 @@ function game_over(){
 /*******************************************************/
 function restartGame(){
     Play_Again_Button.hide();
+    clear();
+
+    //reset score and life
+    score = 0;
+    life = 3;
+
+    // remove previous player if it exists
+    if(Player_Box){
+        Player_Box.remove(); // this deletes the old player
+    }
+    //remove obstacles, saw this in the internet i don't know what this is
+    obstacles_Group.forEach(function(obstacle){
+        obstacle.remove();
+    });
+
+    // remove previous wall if it exists
+    if(wall){
+        wall.remove(); // this deletes the old wall
+    }
+
     setupGame();
     loop();
 }
