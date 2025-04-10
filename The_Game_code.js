@@ -45,10 +45,10 @@ function setupGame(){
     life = 3;
 
     //world gravity
-    world.gravity.y = 15;
+    world.gravity.y = 10;
 
     //creating player sprite
-    Player_Box = new Sprite(300,620, 50,50);
+    Player_Box = new Sprite(500,620, 50,50);
     Player_Box.vel.x = 0;
     Player_Box.color = '#00bcd4';
 
@@ -98,7 +98,7 @@ function startGame(){
 function spawn_obstacles() {
      const  obstacles = new Sprite(1900, 725 , 35, 'k');
      obstacles.color = 'red';
-     obstacles.vel.x = -7;
+     obstacles.vel.x = -3;
      obstacles_Group.add(obstacles);
 }
 
@@ -114,7 +114,7 @@ function draw() {
     background('#1e2a47');
     //player Jumps when mouse is clicked
     if (mouse.presses()) {
-        Player_Box.vel.y = 50;
+        Player_Box.vel.y = 60;
     
     } 
      //Randomly spawn obstacles
@@ -204,9 +204,10 @@ function restartGame(){
     if(Player_Box){
         Player_Box.remove(); // this deletes the old player
     }
-    //remove obstacles, saw this in the internet i don't know what this is
-    obstacles_Group.forEach(function(obstacle){
-        obstacle.remove();
+
+    // Remove all obstacles manually from the group by looping through and removing them
+    obstacles_Group.forEach(function(obstacle) {
+        obstacle.remove();  // <-- Remove each obstacle individually
     });
 
     // remove previous wall if it exists
